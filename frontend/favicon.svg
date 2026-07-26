@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" shape-rendering="geometricPrecision">
+
+  <!-- Background: dark card with slight rounding -->
+  <rect width="32" height="32" rx="6" fill="#0d0d0d"/>
+
+  <!-- Yellow outer glow border ring -->
+  <rect x="1" y="1" width="30" height="30" rx="5.5" fill="none"
+        stroke="#ffe600" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- 6-arm asterisk / star in yellow — scaled to 32×32 canvas -->
+  <path d="
+    M16 3
+    L17.2 11.8
+    L25.1 7.5
+    L19.8 14.5
+    L27 17
+    L19.2 17.8
+    L23.5 25.5
+    L16.4 20.5
+    L14.5 29
+    L13.5 20.2
+    L5.5 24
+    L10.8 17
+    L3 14
+    L11.2 13.2
+    L7.5 5.8
+    L14.5 11.5
+    Z"
+    fill="#ffe600"
+    stroke="#0d0d0d"
+    stroke-width="0.6"
+    stroke-linejoin="round"
+  />
+
+  <!-- Red X badge — top-right corner -->
+  <circle cx="24.5" cy="8.5" r="6.5" fill="#ff4747" stroke="#0d0d0d" stroke-width="1.5"/>
+
+  <!-- X paths (hand-drawn paths, no font dependency) -->
+  <!-- Diagonal 1: top-left → bottom-right -->
+  <line x1="21.5" y1="5.8" x2="27.2" y2="11.5"
+        stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Diagonal 2: top-right → bottom-left -->
+  <line x1="27.2" y1="5.8" x2="21.5" y2="11.5"
+        stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+
+</svg>
