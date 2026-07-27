@@ -20,6 +20,23 @@ function App() {
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [modalInputKey, setModalInputKey] = useState("");
   const [dialog, setDialog] = useState(null);
+  const [backendReady, setBackendReady] = useState(false);
+  const [backendWaking, setBackendWaking] = useState(true);
+
+  // Wake up backend on page load
+  useEffect(() => {
+    const wakeBackend = async () => {
+      try {
+        await axios.get(`${API_BASE.replace('/api', '')}/health`, { timeout: 60000 });
+        setBackendReady(true);
+      } catch {
+        setBackendReady(true); // proceed anyway
+      } finally {
+        setBackendWaking(false);
+      }
+    };
+    wakeBackend();
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -226,6 +243,19 @@ function App() {
 
   return (
     <div>
+      {backendWaking && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, right: 0, zIndex: 9999,
+          background: "#1a1a1a", color: "#f5c518", padding: "10px 20px",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          gap: "10px", fontSize: "0.85rem", fontWeight: "700",
+          fontFamily: "monospace", borderBottom: "2px solid #f5c518"
+        }}>
+          <span style={{ display: "inline-block", animation: "spin 1s linear infinite" }}>⚙️</span>
+          SERVER STARTING UP — please wait a few seconds...
+          <style>{`@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }`}</style>
+        </div>
+      )}
       <nav className="pill-nav">
         <a
           href="#home"
