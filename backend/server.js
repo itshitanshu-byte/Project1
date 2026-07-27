@@ -20,6 +20,10 @@ app.use(cors({ origin: "*", methods: ["GET", "POST", "PUT", "DELETE"], allowedHe
 app.use(express.json());
 app.use(express.static("public"));
 
+app.get("/health", (req, res) => res.status(200).json({ status: "ok" }));
+
+app.use("/api", apiRoutes);
+
 const frontendDist = path.join(__dirname, "../frontend/dist");
 
 if (fs.existsSync(frontendDist)) {
@@ -32,9 +36,6 @@ if (fs.existsSync(frontendDist)) {
     res.json({ message: "evalX API is running. Frontend not bundled with this deployment." });
   });
 }
-
-app.get("/health", (req, res) => res.status(200).json({ status: "ok" }));
-app.use("/api", apiRoutes);
 
 const PORT = process.env.PORT || 5000;
 
