@@ -33,6 +33,7 @@ if (fs.existsSync(frontendDist)) {
   });
 }
 
+app.get("/health", (req, res) => res.status(200).json({ status: "ok" }));
 app.use("/api", apiRoutes);
 
 const PORT = process.env.PORT || 5000;
