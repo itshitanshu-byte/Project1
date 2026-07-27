@@ -9,7 +9,7 @@ import TeacherDashboard from "./pages/TeacherDashboard";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 
-const API_BASE = import.meta.env.VITE_API_BASE || "https://project1-0ask.onrender.com/api";
+const API_BASE = import.meta.env.VITE_API_BASE || "https://project1-1backend.onrender.com/api";
 
 function App() {
   const [currentHash, setCurrentHash] = useState(window.location.hash || "#home");
